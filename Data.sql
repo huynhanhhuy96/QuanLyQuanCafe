@@ -219,11 +219,17 @@ BEGIN
 		DECLARE @isExitBillInfo INT
 		DECLARE @foodCount INT = 1
 
-		SELECT @isExitBillInfo = COUNT (*), @foodCount = count FROM dbo.BillInfo WHERE idBill = @idBill AND idFood = @idFood
+		SELECT @isExitBillInfo = id, @foodCount = b.count 
+		FROM dbo.BillInfo as b 
+		WHERE idBill = @idBill AND idFood = @idFood
 		
 		IF (@isExitBillInfo >0)
 		BEGIN
-			UPDATE dbo.BillInfo SET count = @foodCount + @count
+			DECLARE @newCount INT  = @foodCount + @count
+			IF (@newCount > 0)
+				UPDATE dbo.BillInfo SET count = @foodCount + @count WHERE idFood = @idFood
+			ELSE
+				DELETE dbo.BillInfo WHERE idBill = @idBill AND idFood = @idFood
 		END
 		ELSE
 		BEGIN

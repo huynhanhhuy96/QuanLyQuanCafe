@@ -150,6 +150,7 @@ namespace QuanLyQuanCafe //Assembly
             {
                 BillInfoDAO.Instance.InsertBillInfo(idBill, idFood, count);
             }
+            ShowBill(table.ID);
         }
 
         #endregion
