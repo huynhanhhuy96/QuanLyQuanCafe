@@ -189,6 +189,7 @@ namespace QuanLyQuanCafe
             // 
             // dgvBill
             // 
+            this.dgvBill.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBill.Location = new System.Drawing.Point(4, 4);
             this.dgvBill.Name = "dgvBill";
@@ -215,6 +216,7 @@ namespace QuanLyQuanCafe
             this.btnViewBill.TabIndex = 2;
             this.btnViewBill.Text = "Thống kê";
             this.btnViewBill.UseVisualStyleBackColor = true;
+            this.btnViewBill.Click += new System.EventHandler(this.btnViewBill_Click);
             // 
             // dtpToDate
             // 
@@ -946,8 +948,7 @@ namespace QuanLyQuanCafe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 454);
             this.Controls.Add(this.tabControl1);
             this.Name = "frmAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;

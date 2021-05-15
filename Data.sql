@@ -133,9 +133,6 @@ CREATE PROC USP_GetTableList
 AS SELECT * FROM dbo.TableFood
 GO
 
-UPDATE dbo.TableFood SET status = N'Có người' where id = 8
-GO
-
 -- thêm bàn
 DECLARE @i INT = 0
 WHILE @i <= 10
@@ -334,5 +331,23 @@ BEGIN
 		UPDATE dbo.TableFood SET status = N'Trống' WHERE id = @idTable2
 	IF(@isSecondTableEmty = 0)
 		UPDATE dbo.TableFood SET status = N'Trống' WHERE id = @idTable1
+END
+GO
+
+ALTER TABLE dbo.Bill ADD totalPrice FLOAT
+
+DELETE dbo.BillInfo
+GO
+DELETE dbo.Bill
+GO
+
+CREATE PROC USP_GetListBillByDate
+@checkIn date, @checkOut date
+AS
+BEGIN
+	SELECT tf.name as [Tên bàn], b.totalPrice as [Tổng tiền], DateCheckIn as [Ngày vào], DateCheckOut as [Ngày ra], discount as [Giảm giá]
+	FROM dbo.Bill as b, dbo.TableFood as tf
+	WHERE DateCheckIn >= @checkIn AND DateCheckOut <= @checkOut AND b.status = 1
+	AND tf.id = b.idTable
 END
 GO

@@ -177,7 +177,7 @@ namespace QuanLyQuanCafe //Assembly
             {
                 if (MessageBox.Show($"Bạn có chắc thanh toán hóa đơn cho {table.Name} \n Tổng tiền - (Tổng tiền / 100) x Giảm giá \n => {totalPrice} - ({totalPrice} / 100) x {discount} = {fnTotalPrice}", "Thông báo", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
-                    BillDAO.Instance.CheckOut(idBill, discount);
+                    BillDAO.Instance.CheckOut(idBill, discount, (float)fnTotalPrice);
                     ShowBill(table.ID);
 
                     LoadTable();
