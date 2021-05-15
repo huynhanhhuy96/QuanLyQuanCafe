@@ -47,12 +47,18 @@ namespace QuanLyQuanCafe.DAO
         {
             try
             {
-                return (int)DataProvider.Instance.ExecuteScalar("");
+                return (int)DataProvider.Instance.ExecuteScalar("SELECT MAX(id) FROM dbo.Bill");
             }
             catch
             {
                 return 1;
             }
+        }
+
+        public void CheckOut(int id)
+        {
+            string query = "UPDATE dbo.Bill SET status = 1 WHERE id = " + id;
+            DataProvider.Instance.ExecuteQuery(query);
         }
     }
 }
