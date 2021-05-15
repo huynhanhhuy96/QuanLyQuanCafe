@@ -1,4 +1,5 @@
 ﻿using QuanLyQuanCafe.DAO;
+using QuanLyQuanCafe.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,7 @@ namespace QuanLyQuanCafe
 {
     public partial class frmAdmin : Form
     {
+        BindingSource foodList = new BindingSource();
         public frmAdmin()
         {
             InitializeComponent();
@@ -24,10 +26,14 @@ namespace QuanLyQuanCafe
 
         void LoadAll()
         {
+            dgvFood.DataSource = foodList;
+
             LoadDateTimePickerBill();
             LoadListViewByDate(dtpFromDate.Value, dtpToDate.Value);
             LoadAccountList();
             LoadListFood();
+            AddFoodBinding();
+            LoadCategoryIntoCombobox(cbFoodCategory);
         }
 
         void LoadAccountList()
@@ -51,7 +57,20 @@ namespace QuanLyQuanCafe
 
         void LoadListFood()
         {
-            dgvFood.DataSource = FoodDAO.Instance.GetListFood();
+            foodList.DataSource = FoodDAO.Instance.GetListFood();
+        }
+
+        void AddFoodBinding()
+        {
+            txtFoodName.DataBindings.Add(new Binding("Text", dgvFood.DataSource, "Name"));
+            txtFoodId.DataBindings.Add(new Binding("Text", dgvFood.DataSource, "ID"));
+            nudFoodPrice.DataBindings.Add(new Binding("Value", dgvFood.DataSource, "Price"));
+        }
+
+        void LoadCategoryIntoCombobox(ComboBox cb)
+        {
+            cb.DataSource = CategoryDAO.Instance.GetListCategory();
+            cb.DisplayMember = "Name";
         }
 
         #endregion
@@ -68,5 +87,31 @@ namespace QuanLyQuanCafe
         }
 
         #endregion
+
+        private void txtFoodId_TextChanged(object sender, EventArgs e)
+        {
+            if (dgvFood.SelectedCells.Count > 0)
+            {
+                int id = (int)dgvFood.SelectedCells[0].OwningRow.Cells["CategoryID"].Value;
+
+                Category category = CategoryDAO.Instance.GetCategoryByID(id);
+
+                cbFoodCategory.SelectedItem = category.ID;
+
+                int index = -1;
+                int i = 0;
+
+                foreach (Category item in cbFoodCategory.Items)
+                {
+                    if(item.ID == category.ID)
+                    {
+                        index = i;
+                        i++;
+                    }
+                }
+
+                cbFoodCategory.SelectedIndex = index;
+            }
+        }
     }
 }

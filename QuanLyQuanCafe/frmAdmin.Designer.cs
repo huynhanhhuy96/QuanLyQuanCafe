@@ -357,6 +357,7 @@ namespace QuanLyQuanCafe
             this.txtFoodId.ReadOnly = true;
             this.txtFoodId.Size = new System.Drawing.Size(223, 22);
             this.txtFoodId.TabIndex = 1;
+            this.txtFoodId.TextChanged += new System.EventHandler(this.txtFoodId_TextChanged);
             // 
             // label1
             // 
