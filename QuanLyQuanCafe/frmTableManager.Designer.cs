@@ -43,7 +43,7 @@ namespace QuanLyQuanCafe
             this.panel3 = new System.Windows.Forms.Panel();
             this.txtTotalPrice = new System.Windows.Forms.TextBox();
             this.cbSwitchTable = new System.Windows.Forms.ComboBox();
-            this.nbDiscount = new System.Windows.Forms.NumericUpDown();
+            this.nudDiscount = new System.Windows.Forms.NumericUpDown();
             this.btnCheckOut = new System.Windows.Forms.Button();
             this.btnSwitchTable = new System.Windows.Forms.Button();
             this.btnDiscount = new System.Windows.Forms.Button();
@@ -56,7 +56,7 @@ namespace QuanLyQuanCafe
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nbDiscount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDiscount)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudFoodCount)).BeginInit();
             this.SuspendLayout();
@@ -150,7 +150,7 @@ namespace QuanLyQuanCafe
             // 
             this.panel3.Controls.Add(this.txtTotalPrice);
             this.panel3.Controls.Add(this.cbSwitchTable);
-            this.panel3.Controls.Add(this.nbDiscount);
+            this.panel3.Controls.Add(this.nudDiscount);
             this.panel3.Controls.Add(this.btnCheckOut);
             this.panel3.Controls.Add(this.btnSwitchTable);
             this.panel3.Controls.Add(this.btnDiscount);
@@ -179,13 +179,13 @@ namespace QuanLyQuanCafe
             this.cbSwitchTable.Size = new System.Drawing.Size(94, 24);
             this.cbSwitchTable.TabIndex = 6;
             // 
-            // nbDiscount
+            // nudDiscount
             // 
-            this.nbDiscount.Location = new System.Drawing.Point(103, 33);
-            this.nbDiscount.Name = "nbDiscount";
-            this.nbDiscount.Size = new System.Drawing.Size(94, 22);
-            this.nbDiscount.TabIndex = 3;
-            this.nbDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nudDiscount.Location = new System.Drawing.Point(103, 33);
+            this.nudDiscount.Name = "nudDiscount";
+            this.nudDiscount.Size = new System.Drawing.Size(94, 22);
+            this.nudDiscount.TabIndex = 3;
+            this.nudDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnCheckOut
             // 
@@ -205,6 +205,7 @@ namespace QuanLyQuanCafe
             this.btnSwitchTable.TabIndex = 5;
             this.btnSwitchTable.Text = "Chuyển bàn";
             this.btnSwitchTable.UseVisualStyleBackColor = true;
+            this.btnSwitchTable.Click += new System.EventHandler(this.btnSwitchTable_Click);
             // 
             // btnDiscount
             // 
@@ -297,7 +298,7 @@ namespace QuanLyQuanCafe
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nbDiscount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDiscount)).EndInit();
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nudFoodCount)).EndInit();
             this.ResumeLayout(false);
@@ -323,7 +324,7 @@ namespace QuanLyQuanCafe
         private System.Windows.Forms.FlowLayoutPanel fpnTable;
         private System.Windows.Forms.ComboBox cbSwitchTable;
         private System.Windows.Forms.Button btnSwitchTable;
-        private System.Windows.Forms.NumericUpDown nbDiscount;
+        private System.Windows.Forms.NumericUpDown nudDiscount;
         private System.Windows.Forms.Button btnDiscount;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
