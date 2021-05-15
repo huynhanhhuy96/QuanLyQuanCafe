@@ -11,14 +11,29 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static QuanLyQuanCafe.frmAccountProfile;
 
 namespace QuanLyQuanCafe //Assembly
 {
     public partial class frmTableManager : Form
     {
-        public frmTableManager()
+        private Account loginAccount;
+
+        public Account LoginAccount
+        {
+            get => loginAccount;
+            set
+            {
+                loginAccount = value;
+                ChangeAccount(loginAccount.Type);
+            }
+        }
+
+        public frmTableManager(Account acc)
         {
             InitializeComponent();
+
+            this.LoginAccount = acc;
 
             LoadTable();
             LoadCategory();
@@ -26,6 +41,12 @@ namespace QuanLyQuanCafe //Assembly
         }
 
         #region Method
+
+        void ChangeAccount(int type)
+        {
+            adminToolStripMenuItem.Enabled = type == 1;
+            thôngTinTàiKhoảnToolStripMenuItem.Text += $" ({LoginAccount.DisplayName})";
+        }
 
         void LoadCategory()
         {
@@ -116,8 +137,14 @@ namespace QuanLyQuanCafe //Assembly
 
         private void thôngTinCáNhânToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmAccountProfile frmAP = new frmAccountProfile();
+            frmAccountProfile frmAP = new frmAccountProfile(loginAccount);
+            frmAP.UpdateAccountEvent += frmAP_UpdateAccountEvent;
             frmAP.ShowDialog();
+        }
+
+        void frmAP_UpdateAccountEvent(object sender, AccountEvent e)
+        {
+            thôngTinTàiKhoảnToolStripMenuItem.Text = $"Thông tin tài khoản ({e.Acc.DisplayName})";
         }
 
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)

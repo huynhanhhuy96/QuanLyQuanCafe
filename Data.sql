@@ -351,3 +351,23 @@ BEGIN
 	AND tf.id = b.idTable
 END
 GO
+
+CREATE PROC USP_UpdateAccount
+@userName NVARCHAR(100), @displayName NVARCHAR(100), @password NVARCHAR(1000), @newPassword NVARCHAR(1000)
+AS
+BEGIN
+	DECLARE @isRightPass INT
+	
+	SELECT @isRightPass = COUNT(*) FrOM dbo.Account WHERE UserName = @userName AND PassWord = @password
+
+	IF(@isRightPass = 1)
+	BEGIN
+		IF(@newPassword is NUll OR @newPassword = '')
+		BEGIN
+			UPDATE dbo.Account SET DisplayName = @displayName WHERE UserName = @userName
+		END
+		ELSE
+			UPDATE dbo.Account SET DisplayName = @displayName, PassWord = @newPassword WHERE UserName = @userName
+	END
+END
+GO

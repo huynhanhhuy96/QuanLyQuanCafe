@@ -195,6 +195,7 @@ namespace QuanLyQuanCafe
             this.btnUpdate.TabIndex = 6;
             this.btnUpdate.Text = "Cập nhập";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnExit
             // 
