@@ -73,6 +73,13 @@ namespace QuanLyQuanCafe
             cb.DisplayMember = "Name";
         }
 
+        List<Food> SearchFoodByName(string name)
+        {
+            List<Food> listFood = FoodDAO.Instance.SearchFoodByName(name);
+
+            return listFood;
+        }
+
         #endregion
 
         #region events
@@ -88,28 +95,30 @@ namespace QuanLyQuanCafe
 
         private void txtFoodId_TextChanged(object sender, EventArgs e)
         {
-            if (dgvFood.SelectedCells.Count > 0)
             {
-                int id = (int)dgvFood.SelectedCells[0].OwningRow.Cells["CategoryID"].Value;
-
-                Category category = CategoryDAO.Instance.GetCategoryByID(id);
-
-                cbFoodCategory.SelectedItem = category;
-
-                int index = -1;
-                int i = 0;
-
-                foreach (Category item in cbFoodCategory.Items)
+                if (dgvFood.SelectedCells.Count > 0)
                 {
-                    if(item.ID == category.ID)
-                    {
-                        index = i;
-                        break;
-                    }
-                    i++;
-                }
+                    int id = (int)dgvFood.SelectedCells[0].OwningRow.Cells["CategoryID"].Value;
 
-                cbFoodCategory.SelectedIndex = index;
+                    Category category = CategoryDAO.Instance.GetCategoryByID(id);
+
+                    cbFoodCategory.SelectedItem = category;
+
+                    int index = -1;
+                    int i = 0;
+
+                    foreach (Category item in cbFoodCategory.Items)
+                    {
+                        if (item.ID == category.ID)
+                        {
+                            index = i;
+                            break;
+                        }
+                        i++;
+                    }
+
+                    cbFoodCategory.SelectedIndex = index;
+                }
             }
         }
 
@@ -119,7 +128,7 @@ namespace QuanLyQuanCafe
             int categoryID = (cbFoodCategory.SelectedItem as Category).ID;
             float price = (float)nudFoodPrice.Value;
 
-            if(FoodDAO.Instance.InsertFood(name, categoryID, price))
+            if (FoodDAO.Instance.InsertFood(name, categoryID, price))
             {
                 MessageBox.Show("Thêm món thành công");
                 LoadListFood();
@@ -188,6 +197,11 @@ namespace QuanLyQuanCafe
         {
             add { updateFoodEvent += value; }
             remove { updateFoodEvent -= value; }
+        }
+
+        private void btnSearchFood_Click(object sender, EventArgs e)
+        {
+            foodList.DataSource = SearchFoodByName(txtSearchFoodName.Text);
         }
 
         #endregion
