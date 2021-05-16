@@ -112,7 +112,7 @@ namespace QuanLyQuanCafe
             this.btnEditAccount = new System.Windows.Forms.Button();
             this.btnDeleteAccount = new System.Windows.Forms.Button();
             this.btnAddAccount = new System.Windows.Forms.Button();
-            this.txtAccountType = new System.Windows.Forms.TextBox();
+            this.txtAccountType = new System.Windows.Forms.NumericUpDown();
             this.tabControl1.SuspendLayout();
             this.tpBill.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -152,6 +152,7 @@ namespace QuanLyQuanCafe
             this.panel27.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccount)).BeginInit();
             this.panel29.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAccountType)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -804,6 +805,7 @@ namespace QuanLyQuanCafe
             this.btnResetPassword.TabIndex = 5;
             this.btnResetPassword.Text = "Đặt lại mật khẩu";
             this.btnResetPassword.UseVisualStyleBackColor = true;
+            this.btnResetPassword.Click += new System.EventHandler(this.btnResetPassword_Click);
             // 
             // panel24
             // 
@@ -863,7 +865,6 @@ namespace QuanLyQuanCafe
             // 
             this.txtAccountId.Location = new System.Drawing.Point(167, 16);
             this.txtAccountId.Name = "txtAccountId";
-            this.txtAccountId.ReadOnly = true;
             this.txtAccountId.Size = new System.Drawing.Size(189, 22);
             this.txtAccountId.TabIndex = 1;
             // 
@@ -924,6 +925,7 @@ namespace QuanLyQuanCafe
             this.btnEditAccount.TabIndex = 2;
             this.btnEditAccount.Text = "Sửa";
             this.btnEditAccount.UseVisualStyleBackColor = true;
+            this.btnEditAccount.Click += new System.EventHandler(this.btnEditAccount_Click);
             // 
             // btnDeleteAccount
             // 
@@ -933,6 +935,7 @@ namespace QuanLyQuanCafe
             this.btnDeleteAccount.TabIndex = 1;
             this.btnDeleteAccount.Text = "Xóa";
             this.btnDeleteAccount.UseVisualStyleBackColor = true;
+            this.btnDeleteAccount.Click += new System.EventHandler(this.btnDeleteAccount_Click);
             // 
             // btnAddAccount
             // 
@@ -946,10 +949,15 @@ namespace QuanLyQuanCafe
             // 
             // txtAccountType
             // 
-            this.txtAccountType.Location = new System.Drawing.Point(164, 16);
+            this.txtAccountType.Location = new System.Drawing.Point(221, 15);
+            this.txtAccountType.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.txtAccountType.Name = "txtAccountType";
-            this.txtAccountType.Size = new System.Drawing.Size(192, 22);
-            this.txtAccountType.TabIndex = 2;
+            this.txtAccountType.Size = new System.Drawing.Size(120, 22);
+            this.txtAccountType.TabIndex = 1;
             // 
             // frmAdmin
             // 
@@ -1012,6 +1020,7 @@ namespace QuanLyQuanCafe
             this.panel27.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccount)).EndInit();
             this.panel29.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtAccountType)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1101,6 +1110,6 @@ namespace QuanLyQuanCafe
         private System.Windows.Forms.Button btnEditAccount;
         private System.Windows.Forms.Button btnDeleteAccount;
         private System.Windows.Forms.Button btnAddAccount;
-        private System.Windows.Forms.TextBox txtAccountType;
+        private System.Windows.Forms.NumericUpDown txtAccountType;
     }
 }

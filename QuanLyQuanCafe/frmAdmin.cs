@@ -18,6 +18,8 @@ namespace QuanLyQuanCafe
         BindingSource foodList = new BindingSource();
         BindingSource accountList = new BindingSource();
 
+        public Account loginAccount;
+
         public frmAdmin()
         {
             InitializeComponent();
@@ -90,12 +92,54 @@ namespace QuanLyQuanCafe
         {
             txtAccountId.DataBindings.Add(new Binding("Text", dgvAccount.DataSource, "UserName", true, DataSourceUpdateMode.Never));
             txtAccountDisplayName.DataBindings.Add(new Binding("Text", dgvAccount.DataSource, "DisplayName", true, DataSourceUpdateMode.Never));
-            txtAccountType.DataBindings.Add(new Binding("Text", dgvAccount.DataSource, "Type", true, DataSourceUpdateMode.Never));
+            txtAccountType.DataBindings.Add(new Binding("Value", dgvAccount.DataSource, "Type", true, DataSourceUpdateMode.Never));
         }
 
         void LoadAccount()
         {
             accountList.DataSource = AccountDAO.Instance.GetListAccount();
+        }
+
+        void AddAccount(string name, string displayName, int type)
+        {
+            if (AccountDAO.Instance.InsertAccount(name, displayName, type))
+                MessageBox.Show("Thêm tài khoản thành công");
+            else
+                MessageBox.Show("Thêm tài khoản thất bại");
+
+            LoadAccount();
+        }
+        void EditAccount(string name, string displayName, int type)
+        {
+            if (AccountDAO.Instance.UptdateAccount(name, displayName, type))
+                MessageBox.Show("Cập nhập tài khoản thành công");
+            else
+                MessageBox.Show("Cập nhập tài khoản thất bại");
+
+            LoadAccount();
+        }
+
+        void DeleteAccount(string name)
+        {
+            if(loginAccount.UserName.Equals(name))
+            {
+                MessageBox.Show("Bậy nào đừng xóa bản thân mình bạn êi");
+                return;
+            }
+            if (AccountDAO.Instance.DeleteAccount(name))
+                MessageBox.Show("Cập nhập tài khoản thành công");
+            else
+                MessageBox.Show("Cập nhập tài khoản thất bại");
+
+            LoadAccount();
+        }
+
+        void ResetPass(string userName)
+        {
+            if (AccountDAO.Instance.ResetPass(userName))
+                MessageBox.Show("Đặt lại mật khẩu thành công");
+            else
+                MessageBox.Show("Đặt lại mật khẩu thất bại");
         }
 
         #endregion
@@ -227,11 +271,38 @@ namespace QuanLyQuanCafe
             LoadAccount();
         }
 
-        #endregion
-
         private void btnAddAccount_Click(object sender, EventArgs e)
         {
+            string userName = txtAccountId.Text;
+            string displayName = txtAccountDisplayName.Text;
+            int type = (int)txtAccountType.Value;
 
+            AddAccount(userName, displayName, type);
         }
+
+        private void btnDeleteAccount_Click(object sender, EventArgs e)
+        {
+            string userName = txtAccountId.Text;
+
+            DeleteAccount(userName);
+        }
+
+        private void btnEditAccount_Click(object sender, EventArgs e)
+        {
+            string userName = txtAccountId.Text;
+            string displayName = txtAccountDisplayName.Text;
+            int type = (int)txtAccountType.Value;
+
+            EditAccount(userName, displayName, type);
+        }
+
+        private void btnResetPassword_Click(object sender, EventArgs e)
+        {
+            string userName = txtAccountId.Text;
+
+            ResetPass(userName);
+        }
+
+        #endregion
     }
 }

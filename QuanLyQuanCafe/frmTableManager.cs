@@ -150,6 +150,7 @@ namespace QuanLyQuanCafe //Assembly
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmAdmin frmAM = new frmAdmin();
+            frmAM.loginAccount = LoginAccount;
             frmAM.InsertFoodEvent += frmAM_InsertFood;
             frmAM.DeleteFoodEvent += frmAM_DeleteFood;
             frmAM.UpdateFoodEvent += frmAM_UpdateFood;
