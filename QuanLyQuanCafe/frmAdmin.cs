@@ -16,23 +16,29 @@ namespace QuanLyQuanCafe
     public partial class frmAdmin : Form
     {
         BindingSource foodList = new BindingSource();
+        BindingSource accountList = new BindingSource();
+
         public frmAdmin()
         {
             InitializeComponent();
             LoadAll();
         }
 
+
         #region methods
 
         void LoadAll()
         {
             dgvFood.DataSource = foodList;
+            dgvAccount.DataSource = accountList;
 
             LoadDateTimePickerBill();
             LoadListViewByDate(dtpFromDate.Value, dtpToDate.Value);
             LoadAccountList();
             LoadListFood();
             AddFoodBinding();
+            LoadAccount();
+            AddAccountBinding();
             LoadCategoryIntoCombobox(cbFoodCategory);
         }
 
@@ -78,6 +84,18 @@ namespace QuanLyQuanCafe
             List<Food> listFood = FoodDAO.Instance.SearchFoodByName(name);
 
             return listFood;
+        }
+
+        void AddAccountBinding()
+        {
+            txtAccountId.DataBindings.Add(new Binding("Text", dgvAccount.DataSource, "UserName", true, DataSourceUpdateMode.Never));
+            txtAccountDisplayName.DataBindings.Add(new Binding("Text", dgvAccount.DataSource, "DisplayName", true, DataSourceUpdateMode.Never));
+            txtAccountType.DataBindings.Add(new Binding("Text", dgvAccount.DataSource, "Type", true, DataSourceUpdateMode.Never));
+        }
+
+        void LoadAccount()
+        {
+            accountList.DataSource = AccountDAO.Instance.GetListAccount();
         }
 
         #endregion
@@ -204,6 +222,16 @@ namespace QuanLyQuanCafe
             foodList.DataSource = SearchFoodByName(txtSearchFoodName.Text);
         }
 
+        private void btnShowAccount_Click(object sender, EventArgs e)
+        {
+            LoadAccount();
+        }
+
         #endregion
+
+        private void btnAddAccount_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

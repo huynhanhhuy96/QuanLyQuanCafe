@@ -98,7 +98,6 @@ namespace QuanLyQuanCafe
             this.panel17 = new System.Windows.Forms.Panel();
             this.btnResetPassword = new System.Windows.Forms.Button();
             this.panel24 = new System.Windows.Forms.Panel();
-            this.cbAccountType = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panel25 = new System.Windows.Forms.Panel();
             this.txtAccountDisplayName = new System.Windows.Forms.TextBox();
@@ -113,6 +112,7 @@ namespace QuanLyQuanCafe
             this.btnEditAccount = new System.Windows.Forms.Button();
             this.btnDeleteAccount = new System.Windows.Forms.Button();
             this.btnAddAccount = new System.Windows.Forms.Button();
+            this.txtAccountType = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tpBill.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -807,20 +807,12 @@ namespace QuanLyQuanCafe
             // 
             // panel24
             // 
-            this.panel24.Controls.Add(this.cbAccountType);
+            this.panel24.Controls.Add(this.txtAccountType);
             this.panel24.Controls.Add(this.label11);
             this.panel24.Location = new System.Drawing.Point(3, 125);
             this.panel24.Name = "panel24";
             this.panel24.Size = new System.Drawing.Size(359, 55);
             this.panel24.TabIndex = 4;
-            // 
-            // cbAccountType
-            // 
-            this.cbAccountType.FormattingEnabled = true;
-            this.cbAccountType.Location = new System.Drawing.Point(167, 14);
-            this.cbAccountType.Name = "cbAccountType";
-            this.cbAccountType.Size = new System.Drawing.Size(189, 24);
-            this.cbAccountType.TabIndex = 1;
             // 
             // label11
             // 
@@ -922,6 +914,7 @@ namespace QuanLyQuanCafe
             this.btnShowAccount.TabIndex = 3;
             this.btnShowAccount.Text = "Xem";
             this.btnShowAccount.UseVisualStyleBackColor = true;
+            this.btnShowAccount.Click += new System.EventHandler(this.btnShowAccount_Click);
             // 
             // btnEditAccount
             // 
@@ -949,6 +942,14 @@ namespace QuanLyQuanCafe
             this.btnAddAccount.TabIndex = 0;
             this.btnAddAccount.Text = "Thêm";
             this.btnAddAccount.UseVisualStyleBackColor = true;
+            this.btnAddAccount.Click += new System.EventHandler(this.btnAddAccount_Click);
+            // 
+            // txtAccountType
+            // 
+            this.txtAccountType.Location = new System.Drawing.Point(164, 16);
+            this.txtAccountType.Name = "txtAccountType";
+            this.txtAccountType.Size = new System.Drawing.Size(192, 22);
+            this.txtAccountType.TabIndex = 2;
             // 
             // frmAdmin
             // 
@@ -1086,7 +1087,6 @@ namespace QuanLyQuanCafe
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.Button btnResetPassword;
         private System.Windows.Forms.Panel panel24;
-        private System.Windows.Forms.ComboBox cbAccountType;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel25;
         private System.Windows.Forms.TextBox txtAccountDisplayName;
@@ -1101,5 +1101,6 @@ namespace QuanLyQuanCafe
         private System.Windows.Forms.Button btnEditAccount;
         private System.Windows.Forms.Button btnDeleteAccount;
         private System.Windows.Forms.Button btnAddAccount;
+        private System.Windows.Forms.TextBox txtAccountType;
     }
 }
