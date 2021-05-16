@@ -391,3 +391,33 @@ BEGIN
 		UPDATE dbo.TableFood SET status = N'Trống' WHERE id = @idTable
 END
 GO
+
+CREATE PROC USP_GetListBillByDateAndPage
+@checkIn date, @checkOut date, @page int
+AS
+BEGIN
+	DECLARE @pageRows INT = 10
+	DECLARE @selectRows INT = @pageRows
+	DECLARE @excepRows INT = (@page - 1) * @pageRows
+
+	-- ??? :D ???
+	;WITH BillShow AS (SELECT b.id, tf.name as [Tên bàn], b.totalPrice as [Tổng tiền], DateCheckIn as [Ngày vào], DateCheckOut as [Ngày ra], discount as [Giảm giá]
+	FROM dbo.Bill as b, dbo.TableFood as tf
+	WHERE DateCheckIn >= @checkIn AND DateCheckOut <= @checkOut AND b.status = 1
+	AND tf.id = b.idTable)
+
+	SELECT TOP (@selectRows) * FROM BillShow WHERE BillShow.id NOT IN
+	(SELECT TOP (@excepRows) id FROM BillShow)
+END
+GO
+
+CREATE PROC USP_GetNumBillByDate
+@checkIn date, @checkOut date
+AS
+BEGIN
+	SELECT COUNT(*)
+	FROM dbo.Bill as b, dbo.TableFood as tf
+	WHERE DateCheckIn >= @checkIn AND DateCheckOut <= @checkOut AND b.status = 1
+	AND tf.id = b.idTable
+END
+GO

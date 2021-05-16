@@ -98,6 +98,7 @@ namespace QuanLyQuanCafe
             this.panel17 = new System.Windows.Forms.Panel();
             this.btnResetPassword = new System.Windows.Forms.Button();
             this.panel24 = new System.Windows.Forms.Panel();
+            this.txtAccountType = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
             this.panel25 = new System.Windows.Forms.Panel();
             this.txtAccountDisplayName = new System.Windows.Forms.TextBox();
@@ -112,7 +113,11 @@ namespace QuanLyQuanCafe
             this.btnEditAccount = new System.Windows.Forms.Button();
             this.btnDeleteAccount = new System.Windows.Forms.Button();
             this.btnAddAccount = new System.Windows.Forms.Button();
-            this.txtAccountType = new System.Windows.Forms.NumericUpDown();
+            this.btnFirstViewPage = new System.Windows.Forms.Button();
+            this.btnLastVewPage = new System.Windows.Forms.Button();
+            this.btnPrevioursVewPage = new System.Windows.Forms.Button();
+            this.btnNextViewPage = new System.Windows.Forms.Button();
+            this.txtPage = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tpBill.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -147,12 +152,12 @@ namespace QuanLyQuanCafe
             this.tpAdmin.SuspendLayout();
             this.panel17.SuspendLayout();
             this.panel24.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAccountType)).BeginInit();
             this.panel25.SuspendLayout();
             this.panel26.SuspendLayout();
             this.panel27.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccount)).BeginInit();
             this.panel29.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAccountType)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -182,6 +187,11 @@ namespace QuanLyQuanCafe
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.txtPage);
+            this.panel2.Controls.Add(this.btnNextViewPage);
+            this.panel2.Controls.Add(this.btnPrevioursVewPage);
+            this.panel2.Controls.Add(this.btnLastVewPage);
+            this.panel2.Controls.Add(this.btnFirstViewPage);
             this.panel2.Controls.Add(this.dgvBill);
             this.panel2.Location = new System.Drawing.Point(6, 43);
             this.panel2.Name = "panel2";
@@ -196,7 +206,7 @@ namespace QuanLyQuanCafe
             this.dgvBill.Name = "dgvBill";
             this.dgvBill.RowHeadersWidth = 51;
             this.dgvBill.RowTemplate.Height = 24;
-            this.dgvBill.Size = new System.Drawing.Size(749, 341);
+            this.dgvBill.Size = new System.Drawing.Size(749, 306);
             this.dgvBill.TabIndex = 0;
             // 
             // panel1
@@ -816,6 +826,18 @@ namespace QuanLyQuanCafe
             this.panel24.Size = new System.Drawing.Size(359, 55);
             this.panel24.TabIndex = 4;
             // 
+            // txtAccountType
+            // 
+            this.txtAccountType.Location = new System.Drawing.Point(221, 15);
+            this.txtAccountType.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.txtAccountType.Name = "txtAccountType";
+            this.txtAccountType.Size = new System.Drawing.Size(120, 22);
+            this.txtAccountType.TabIndex = 1;
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -947,17 +969,56 @@ namespace QuanLyQuanCafe
             this.btnAddAccount.UseVisualStyleBackColor = true;
             this.btnAddAccount.Click += new System.EventHandler(this.btnAddAccount_Click);
             // 
-            // txtAccountType
+            // btnFirstViewPage
             // 
-            this.txtAccountType.Location = new System.Drawing.Point(221, 15);
-            this.txtAccountType.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.txtAccountType.Name = "txtAccountType";
-            this.txtAccountType.Size = new System.Drawing.Size(120, 22);
-            this.txtAccountType.TabIndex = 1;
+            this.btnFirstViewPage.Location = new System.Drawing.Point(4, 316);
+            this.btnFirstViewPage.Name = "btnFirstViewPage";
+            this.btnFirstViewPage.Size = new System.Drawing.Size(75, 29);
+            this.btnFirstViewPage.TabIndex = 1;
+            this.btnFirstViewPage.Text = "First";
+            this.btnFirstViewPage.UseVisualStyleBackColor = true;
+            this.btnFirstViewPage.Click += new System.EventHandler(this.btnFirstViewPage_Click);
+            // 
+            // btnLastVewPage
+            // 
+            this.btnLastVewPage.Location = new System.Drawing.Point(678, 316);
+            this.btnLastVewPage.Name = "btnLastVewPage";
+            this.btnLastVewPage.Size = new System.Drawing.Size(75, 29);
+            this.btnLastVewPage.TabIndex = 2;
+            this.btnLastVewPage.Text = "Last";
+            this.btnLastVewPage.UseVisualStyleBackColor = true;
+            this.btnLastVewPage.Click += new System.EventHandler(this.btnLastVewPage_Click);
+            // 
+            // btnPrevioursVewPage
+            // 
+            this.btnPrevioursVewPage.Location = new System.Drawing.Point(85, 316);
+            this.btnPrevioursVewPage.Name = "btnPrevioursVewPage";
+            this.btnPrevioursVewPage.Size = new System.Drawing.Size(103, 29);
+            this.btnPrevioursVewPage.TabIndex = 3;
+            this.btnPrevioursVewPage.Text = "Previours";
+            this.btnPrevioursVewPage.UseVisualStyleBackColor = true;
+            this.btnPrevioursVewPage.Click += new System.EventHandler(this.btnPrevioursVewPage_Click);
+            // 
+            // btnNextViewPage
+            // 
+            this.btnNextViewPage.Location = new System.Drawing.Point(569, 316);
+            this.btnNextViewPage.Name = "btnNextViewPage";
+            this.btnNextViewPage.Size = new System.Drawing.Size(103, 29);
+            this.btnNextViewPage.TabIndex = 4;
+            this.btnNextViewPage.Text = "Next";
+            this.btnNextViewPage.UseVisualStyleBackColor = true;
+            this.btnNextViewPage.Click += new System.EventHandler(this.btnNextViewPage_Click);
+            // 
+            // txtPage
+            // 
+            this.txtPage.Location = new System.Drawing.Point(330, 319);
+            this.txtPage.Name = "txtPage";
+            this.txtPage.ReadOnly = true;
+            this.txtPage.Size = new System.Drawing.Size(92, 22);
+            this.txtPage.TabIndex = 5;
+            this.txtPage.Text = "1";
+            this.txtPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPage.TextChanged += new System.EventHandler(this.txtPage_TextChanged);
             // 
             // frmAdmin
             // 
@@ -971,6 +1032,7 @@ namespace QuanLyQuanCafe
             this.tabControl1.ResumeLayout(false);
             this.tpBill.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).EndInit();
             this.panel1.ResumeLayout(false);
             this.tpFood.ResumeLayout(false);
@@ -1013,6 +1075,7 @@ namespace QuanLyQuanCafe
             this.panel17.ResumeLayout(false);
             this.panel24.ResumeLayout(false);
             this.panel24.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAccountType)).EndInit();
             this.panel25.ResumeLayout(false);
             this.panel25.PerformLayout();
             this.panel26.ResumeLayout(false);
@@ -1020,7 +1083,6 @@ namespace QuanLyQuanCafe
             this.panel27.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccount)).EndInit();
             this.panel29.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtAccountType)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1111,5 +1173,10 @@ namespace QuanLyQuanCafe
         private System.Windows.Forms.Button btnDeleteAccount;
         private System.Windows.Forms.Button btnAddAccount;
         private System.Windows.Forms.NumericUpDown txtAccountType;
+        private System.Windows.Forms.Button btnFirstViewPage;
+        private System.Windows.Forms.Button btnLastVewPage;
+        private System.Windows.Forms.Button btnNextViewPage;
+        private System.Windows.Forms.Button btnPrevioursVewPage;
+        private System.Windows.Forms.TextBox txtPage;
     }
 }

@@ -121,7 +121,7 @@ namespace QuanLyQuanCafe
 
         void DeleteAccount(string name)
         {
-            if(loginAccount.UserName.Equals(name))
+            if (loginAccount.UserName.Equals(name))
             {
                 MessageBox.Show("Bậy nào đừng xóa bản thân mình bạn êi");
                 return;
@@ -304,5 +304,48 @@ namespace QuanLyQuanCafe
         }
 
         #endregion
+
+        private void btnFirstViewPage_Click(object sender, EventArgs e)
+        {
+            txtPage.Text = "1";
+        }
+
+        private void btnLastVewPage_Click(object sender, EventArgs e)
+        {
+            int sumRecord = BillDAO.Instance.GetNumBillListByDate(dtpFromDate.Value, dtpToDate.Value);
+
+            int lastPage = sumRecord / 10;
+
+            if (sumRecord % 10 != 0)
+                lastPage++;
+
+            txtPage.Text = lastPage.ToString();
+        }
+
+        private void txtPage_TextChanged(object sender, EventArgs e)
+        {
+            dgvBill.DataSource = BillDAO.Instance.GetBillListByDateAndPage(dtpFromDate.Value, dtpToDate.Value, Convert.ToInt32(txtPage.Text));
+        }
+
+        private void btnPrevioursVewPage_Click(object sender, EventArgs e)
+        {
+            int page = Convert.ToInt32(txtPage.Text);
+
+            if (page > 1)
+                page--;
+
+            txtPage.Text = page.ToString();
+        }
+
+        private void btnNextViewPage_Click(object sender, EventArgs e)
+        {
+            int page = Convert.ToInt32(txtPage.Text);
+            int sumRecord = BillDAO.Instance.GetNumBillListByDate(dtpFromDate.Value, dtpToDate.Value);
+
+            if (page < sumRecord)
+                page++;
+
+            txtPage.Text = page.ToString();
+        }
     }
 }
