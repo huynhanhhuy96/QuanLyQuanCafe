@@ -32,6 +32,11 @@ namespace QuanLyQuanCafe
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpBill = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtPage = new System.Windows.Forms.TextBox();
+            this.btnNextViewPage = new System.Windows.Forms.Button();
+            this.btnPrevioursVewPage = new System.Windows.Forms.Button();
+            this.btnLastVewPage = new System.Windows.Forms.Button();
+            this.btnFirstViewPage = new System.Windows.Forms.Button();
             this.dgvBill = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnViewBill = new System.Windows.Forms.Button();
@@ -113,11 +118,7 @@ namespace QuanLyQuanCafe
             this.btnEditAccount = new System.Windows.Forms.Button();
             this.btnDeleteAccount = new System.Windows.Forms.Button();
             this.btnAddAccount = new System.Windows.Forms.Button();
-            this.btnFirstViewPage = new System.Windows.Forms.Button();
-            this.btnLastVewPage = new System.Windows.Forms.Button();
-            this.btnPrevioursVewPage = new System.Windows.Forms.Button();
-            this.btnNextViewPage = new System.Windows.Forms.Button();
-            this.txtPage = new System.Windows.Forms.TextBox();
+            this.Report = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tpBill.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -167,6 +168,7 @@ namespace QuanLyQuanCafe
             this.tabControl1.Controls.Add(this.tpFoodCategory);
             this.tabControl1.Controls.Add(this.tpTable);
             this.tabControl1.Controls.Add(this.tpAdmin);
+            this.tabControl1.Controls.Add(this.Report);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -197,6 +199,57 @@ namespace QuanLyQuanCafe
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(756, 348);
             this.panel2.TabIndex = 1;
+            // 
+            // txtPage
+            // 
+            this.txtPage.Location = new System.Drawing.Point(330, 319);
+            this.txtPage.Name = "txtPage";
+            this.txtPage.ReadOnly = true;
+            this.txtPage.Size = new System.Drawing.Size(92, 22);
+            this.txtPage.TabIndex = 5;
+            this.txtPage.Text = "1";
+            this.txtPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPage.TextChanged += new System.EventHandler(this.txtPage_TextChanged);
+            // 
+            // btnNextViewPage
+            // 
+            this.btnNextViewPage.Location = new System.Drawing.Point(569, 316);
+            this.btnNextViewPage.Name = "btnNextViewPage";
+            this.btnNextViewPage.Size = new System.Drawing.Size(103, 29);
+            this.btnNextViewPage.TabIndex = 4;
+            this.btnNextViewPage.Text = "Next";
+            this.btnNextViewPage.UseVisualStyleBackColor = true;
+            this.btnNextViewPage.Click += new System.EventHandler(this.btnNextViewPage_Click);
+            // 
+            // btnPrevioursVewPage
+            // 
+            this.btnPrevioursVewPage.Location = new System.Drawing.Point(85, 316);
+            this.btnPrevioursVewPage.Name = "btnPrevioursVewPage";
+            this.btnPrevioursVewPage.Size = new System.Drawing.Size(103, 29);
+            this.btnPrevioursVewPage.TabIndex = 3;
+            this.btnPrevioursVewPage.Text = "Previours";
+            this.btnPrevioursVewPage.UseVisualStyleBackColor = true;
+            this.btnPrevioursVewPage.Click += new System.EventHandler(this.btnPrevioursVewPage_Click);
+            // 
+            // btnLastVewPage
+            // 
+            this.btnLastVewPage.Location = new System.Drawing.Point(678, 316);
+            this.btnLastVewPage.Name = "btnLastVewPage";
+            this.btnLastVewPage.Size = new System.Drawing.Size(75, 29);
+            this.btnLastVewPage.TabIndex = 2;
+            this.btnLastVewPage.Text = "Last";
+            this.btnLastVewPage.UseVisualStyleBackColor = true;
+            this.btnLastVewPage.Click += new System.EventHandler(this.btnLastVewPage_Click);
+            // 
+            // btnFirstViewPage
+            // 
+            this.btnFirstViewPage.Location = new System.Drawing.Point(4, 316);
+            this.btnFirstViewPage.Name = "btnFirstViewPage";
+            this.btnFirstViewPage.Size = new System.Drawing.Size(75, 29);
+            this.btnFirstViewPage.TabIndex = 1;
+            this.btnFirstViewPage.Text = "First";
+            this.btnFirstViewPage.UseVisualStyleBackColor = true;
+            this.btnFirstViewPage.Click += new System.EventHandler(this.btnFirstViewPage_Click);
             // 
             // dgvBill
             // 
@@ -969,56 +1022,15 @@ namespace QuanLyQuanCafe
             this.btnAddAccount.UseVisualStyleBackColor = true;
             this.btnAddAccount.Click += new System.EventHandler(this.btnAddAccount_Click);
             // 
-            // btnFirstViewPage
+            // Report
             // 
-            this.btnFirstViewPage.Location = new System.Drawing.Point(4, 316);
-            this.btnFirstViewPage.Name = "btnFirstViewPage";
-            this.btnFirstViewPage.Size = new System.Drawing.Size(75, 29);
-            this.btnFirstViewPage.TabIndex = 1;
-            this.btnFirstViewPage.Text = "First";
-            this.btnFirstViewPage.UseVisualStyleBackColor = true;
-            this.btnFirstViewPage.Click += new System.EventHandler(this.btnFirstViewPage_Click);
-            // 
-            // btnLastVewPage
-            // 
-            this.btnLastVewPage.Location = new System.Drawing.Point(678, 316);
-            this.btnLastVewPage.Name = "btnLastVewPage";
-            this.btnLastVewPage.Size = new System.Drawing.Size(75, 29);
-            this.btnLastVewPage.TabIndex = 2;
-            this.btnLastVewPage.Text = "Last";
-            this.btnLastVewPage.UseVisualStyleBackColor = true;
-            this.btnLastVewPage.Click += new System.EventHandler(this.btnLastVewPage_Click);
-            // 
-            // btnPrevioursVewPage
-            // 
-            this.btnPrevioursVewPage.Location = new System.Drawing.Point(85, 316);
-            this.btnPrevioursVewPage.Name = "btnPrevioursVewPage";
-            this.btnPrevioursVewPage.Size = new System.Drawing.Size(103, 29);
-            this.btnPrevioursVewPage.TabIndex = 3;
-            this.btnPrevioursVewPage.Text = "Previours";
-            this.btnPrevioursVewPage.UseVisualStyleBackColor = true;
-            this.btnPrevioursVewPage.Click += new System.EventHandler(this.btnPrevioursVewPage_Click);
-            // 
-            // btnNextViewPage
-            // 
-            this.btnNextViewPage.Location = new System.Drawing.Point(569, 316);
-            this.btnNextViewPage.Name = "btnNextViewPage";
-            this.btnNextViewPage.Size = new System.Drawing.Size(103, 29);
-            this.btnNextViewPage.TabIndex = 4;
-            this.btnNextViewPage.Text = "Next";
-            this.btnNextViewPage.UseVisualStyleBackColor = true;
-            this.btnNextViewPage.Click += new System.EventHandler(this.btnNextViewPage_Click);
-            // 
-            // txtPage
-            // 
-            this.txtPage.Location = new System.Drawing.Point(330, 319);
-            this.txtPage.Name = "txtPage";
-            this.txtPage.ReadOnly = true;
-            this.txtPage.Size = new System.Drawing.Size(92, 22);
-            this.txtPage.TabIndex = 5;
-            this.txtPage.Text = "1";
-            this.txtPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtPage.TextChanged += new System.EventHandler(this.txtPage_TextChanged);
+            this.Report.Location = new System.Drawing.Point(4, 25);
+            this.Report.Name = "Report";
+            this.Report.Padding = new System.Windows.Forms.Padding(3);
+            this.Report.Size = new System.Drawing.Size(768, 397);
+            this.Report.TabIndex = 5;
+            this.Report.Text = "Report";
+            this.Report.UseVisualStyleBackColor = true;
             // 
             // frmAdmin
             // 
@@ -1178,5 +1190,6 @@ namespace QuanLyQuanCafe
         private System.Windows.Forms.Button btnNextViewPage;
         private System.Windows.Forms.Button btnPrevioursVewPage;
         private System.Windows.Forms.TextBox txtPage;
+        private System.Windows.Forms.TabPage Report;
     }
 }

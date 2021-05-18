@@ -36,19 +36,11 @@ namespace QuanLyQuanCafe
 
             LoadDateTimePickerBill();
             LoadListViewByDate(dtpFromDate.Value, dtpToDate.Value);
-            LoadAccountList();
             LoadListFood();
             AddFoodBinding();
             LoadAccount();
             AddAccountBinding();
             LoadCategoryIntoCombobox(cbFoodCategory);
-        }
-
-        void LoadAccountList()
-        {
-            string query = "Exec dbo.USP_GetAccountByUserName @userName";
-
-            dgvAccount.DataSource = DataProvider.Instance.ExecuteQuery(query, new object[] { "K9" });
         }
 
         void LoadListViewByDate(DateTime checkIn, DateTime checkOut)
@@ -346,6 +338,10 @@ namespace QuanLyQuanCafe
                 page++;
 
             txtPage.Text = page.ToString();
+        }
+
+        private void frmAdmin_Load(object sender, EventArgs e)
+        {
         }
     }
 }
