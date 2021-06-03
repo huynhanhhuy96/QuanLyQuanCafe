@@ -198,7 +198,7 @@ namespace QuanLyQuanCafe //Assembly
         {
             Table table = lstvBill.Tag as Table;
 
-            if(table == null)
+            if (table == null)
             {
                 MessageBox.Show("Hãy chọn bàn");
                 return;
@@ -229,7 +229,9 @@ namespace QuanLyQuanCafe //Assembly
             int idBill = BillDAO.Instance.GetUncheckBillIdByTableID(table.ID);
             int discount = (int)nudDiscount.Value;
 
-            double totalPrice = Convert.ToDouble(txtTotalPrice.Text.Split(',')[0]) * 1000;
+            CultureInfo culture = new CultureInfo("vi");
+
+            double totalPrice = double.Parse(txtTotalPrice.Text.Split(',')[0], culture);
             double fnTotalPrice = totalPrice - (totalPrice / 100) * discount;
 
             if (idBill != -1)
